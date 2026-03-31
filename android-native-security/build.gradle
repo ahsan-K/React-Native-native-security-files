@@ -1,0 +1,23 @@
+plugins {
+  id "com.android.library"
+  id "org.jetbrains.kotlin.android" // optional if kotlin code inside this module
+}
+
+android {
+  namespace "com.projectname.security" // done't change
+  compileSdk rootProject.ext.compileSdkVersion
+
+  defaultConfig {
+    minSdk rootProject.ext.minSdkVersion
+
+    ndk {
+      abiFilters "armeabi-v7a", "arm64-v8a"
+    }
+  }
+
+  externalNativeBuild {
+    cmake {
+      path "src/main/cpp/CMakeLists.txt"
+    }
+  }
+}
